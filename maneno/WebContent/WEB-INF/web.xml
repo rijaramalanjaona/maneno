@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>maneno</display-name>
+	<servlet>
+		<servlet-name>maneno</servlet-name>
+		<servlet-class>mg.cufp.isr3.servlet.Application</servlet-class>
+		<init-param>
+			<param-name>urlCategorieEdit</param-name>
+			<param-value>/WEB-INF/vues/editCategorie.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlCategorieList</param-name>
+			<param-value>/WEB-INF/vues/listCategorie.jsp</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>maneno</servlet-name>
+		<url-pattern>/index.html</url-pattern>
+	</servlet-mapping>
+</web-app>
