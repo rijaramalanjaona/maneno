@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Liste des categories</title>
+<title>Liste des produits</title>
 
 <style type="text/css">
 	h1 { 
@@ -60,33 +60,57 @@
 </head>
 <body>
 
-	<h1>Liste des categories :</h1>
+	<h1>Liste des produits</h1>
 	<table id="tab">
 		<tr>
 			<th></th>
-			<th></th>
-			<th>Id</th>
+			<th>Categorie</th>
 			<th>Libelle</th>
+			<th>Prix</th>
+			<th>Stock</th>
 		</tr>
-		<c:if test="${listCategorie != null}">
-			<c:forEach var="categorie" items="${listCategorie}">
+		<c:if test="${listProduit != null}">
+			<c:forEach var="produit" items="${listProduit}">
 		    <tr>
-		       	<td><a href="<c:url value="/?action=supprimerCategorie&id=${categorie.id}"/>">Supprimer</a></td>
-		       	<td><a href="<c:url value="/?action=modifierCategorie&id=${categorie.id}"/>">Editer</a></td>
-		    	<td><c:out value="${categorie.id}" /></td>
-		    	<td><c:out value="${categorie.libelle}" /></td>
+		       	<td><a href="<c:url value="/?action=formModifierProduit&id=${produit.id}"/>">Editer</a></td>
+		    	<td><c:out value="${produit.categorie.libelle}" /></td>
+		    	<td><c:out value="${produit.libelle}" /></td>
+		    	<td><c:out value="${produit.prix}" /></td>
+		    	<td><c:out value="${produit.stock}" /></td>
 		    </tr>	
 			</c:forEach>
 		</c:if>
 	</table>
 	
-	<form action="<c:url value="/?action=inserer" />" method="post">
+	<form action="<c:url value="/?action=insererProduit" />" method="post">
 		<fieldset>
-			<legend>Insertion d'une categorie</legend>
+			<legend>Insertion d'un produit</legend>
 			<table>
 				<tr>
+					<td>Categorie :</td>
+					<td>
+						<select name="id_categorie" id="id_categorie">
+							<c:forEach var="categorie" items="${listCategorie}">
+							<option value="<c:out value="${categorie.id}" />"><c:out value="${categorie.libelle}" /></option>
+							</c:forEach>
+						</select>
+					</td>
+				</tr>
+				<tr>
 					<td>Libelle :</td>
-					<td><input type="text" name="libelle" value="" /></td>
+					<td><input type="text" name="libelle" id="libelle" value="" /></td>
+				</tr>
+				<tr>
+					<td>Description :</td>
+					<td><textarea name="description" id="description"></textarea></td>
+				</tr>
+				<tr>
+					<td>Prix :</td>
+					<td><input type="text" name="prix" id="prix" value="" /></td>
+				</tr>
+				<tr>
+					<td>Stock :</td>
+					<td><input type="text" id="stock" name="stock" value="" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Envoyer"/></td>

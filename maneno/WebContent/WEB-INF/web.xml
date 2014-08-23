@@ -9,11 +9,19 @@
 		<servlet-class>mg.cufp.isr3.servlet.Application</servlet-class>
 		<init-param>
 			<param-name>urlCategorieEdit</param-name>
-			<param-value>/WEB-INF/vues/editCategorie.jsp</param-value>
+			<param-value>/WEB-INF/vues/admin/editCategorie.jsp</param-value>
 		</init-param>
 		<init-param>
 			<param-name>urlCategorieList</param-name>
-			<param-value>/WEB-INF/vues/listCategorie.jsp</param-value>
+			<param-value>/WEB-INF/vues/admin/listCategorie.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlProduitEdit</param-name>
+			<param-value>/WEB-INF/vues/admin/editProduit.jsp</param-value>
+		</init-param>
+		<init-param>
+			<param-name>urlProduitList</param-name>
+			<param-value>/WEB-INF/vues/admin/listProduit.jsp</param-value>
 		</init-param>
 	</servlet>
 	<servlet-mapping>
