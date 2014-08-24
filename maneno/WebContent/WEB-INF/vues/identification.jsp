@@ -1,14 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Liste des categories</title>
-
+<title>Identification</title>
 <style type="text/css">
 	h1 { 
   		font-family: serif;
@@ -55,42 +52,38 @@
     	font-size: 0.8em;
 	    letter-spacing: 1px;
 	}
-	
+	#error {
+		color:red;
+	}
+	.menu {
+    	font-size: 0.8em;
+		text-align:right;
+		margin:20px;
+	}
 </style>
 </head>
 <body>
-	<c:import url="/WEB-INF/vues/admin/menu.jsp"></c:import>
-	<h1>Liste des categories</h1>
-	<table id="tab">
-		<tr>
-			<th></th>
-			<th>Libelle</th>
-		</tr>
-		<c:if test="${listCategorie != null}">
-			<c:forEach var="categorie" items="${listCategorie}">
-		    <tr>
-		       	<%-- <td><a href="<c:url value="/?action=supprimerCategorie&id=${categorie.id}"/>">Supprimer</a></td> --%>
-		       	<td><a href="<c:url value="/?action=formModifierCategorie&id=${categorie.id}"/>">Editer</a></td>
-		    	<td><c:out value="${categorie.libelle}" /></td>
-		    </tr>	
-			</c:forEach>
-		</c:if>
-	</table>
-	
-	<form action="<c:url value="/?action=insererCategorie" />" method="post">
+	<div class="menu">
+		<a href="<c:url value="/?action=inscription" />">Inscription</a>&nbsp;|&nbsp;
+	</div>
+	<div style="color:red;">${errorMessage}</div>
+	<form action="<c:url value="/?action=identifier" />" method="post">
 		<fieldset>
-			<legend>Insertion d'une categorie</legend>
+			<legend>Identification</legend>
 			<table>
 				<tr>
-					<td>Libelle :</td>
-					<td><input type="text" name="libelle" value="" id="libelle" /></td>
+					<td>Login :</td>
+					<td><input type="text" name="login" value="" /></td>
+				</tr>
+				<tr>
+					<td>Password :</td>
+					<td><input type="password" name="password" value="" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Envoyer"/></td>
 				</tr>
 			</table>
 		</fieldset>
-			
 	</form>
 </body>
 </html>

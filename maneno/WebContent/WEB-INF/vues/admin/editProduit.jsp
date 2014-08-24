@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-
+	<c:import url="/WEB-INF/vues/admin/menu.jsp"></c:import>
 	<h1>Modification d'un produit</h1>
 	<form action="<c:url value="/?action=modifierProduit" />" method="post">
 		<input type="hidden" name="id" value="<c:out value="${produit.id}" />" />

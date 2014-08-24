@@ -23,6 +23,22 @@
 			<param-name>urlProduitList</param-name>
 			<param-value>/WEB-INF/vues/admin/listProduit.jsp</param-value>
 		</init-param>
+      	<init-param>
+            <param-name>urlInscription</param-name>
+            <param-value>/WEB-INF/vues/inscription.jsp</param-value>
+      	</init-param>
+      	<init-param>
+            <param-name>urlIdentification</param-name>
+            <param-value>/WEB-INF/vues/identification.jsp</param-value>
+      	</init-param>
+      	<init-param>
+            <param-name>urlCommande</param-name>
+            <param-value>/WEB-INF/vues/commande.jsp</param-value>
+      	</init-param>
+      	<init-param>
+            <param-name>urlHistoriqueAchat</param-name>
+            <param-value>/WEB-INF/vues/historiqueAchat.jsp</param-value>
+     	</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>maneno</servlet-name>

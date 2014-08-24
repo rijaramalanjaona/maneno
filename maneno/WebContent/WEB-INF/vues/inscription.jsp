@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Liste des categories</title>
+<title>Inscription</title>
 
 <style type="text/css">
 	h1 { 
@@ -56,34 +56,41 @@
 	    letter-spacing: 1px;
 	}
 	
+	.menu {
+    	font-size: 0.8em;
+		text-align:right;
+		margin:20px;
+	}
 </style>
 </head>
 <body>
-	<c:import url="/WEB-INF/vues/admin/menu.jsp"></c:import>
-	<h1>Liste des categories</h1>
-	<table id="tab">
-		<tr>
-			<th></th>
-			<th>Libelle</th>
-		</tr>
-		<c:if test="${listCategorie != null}">
-			<c:forEach var="categorie" items="${listCategorie}">
-		    <tr>
-		       	<%-- <td><a href="<c:url value="/?action=supprimerCategorie&id=${categorie.id}"/>">Supprimer</a></td> --%>
-		       	<td><a href="<c:url value="/?action=formModifierCategorie&id=${categorie.id}"/>">Editer</a></td>
-		    	<td><c:out value="${categorie.libelle}" /></td>
-		    </tr>	
-			</c:forEach>
-		</c:if>
-	</table>
-	
-	<form action="<c:url value="/?action=insererCategorie" />" method="post">
+	<form action="<c:url value="/?action=insererClient" />" method="post">
 		<fieldset>
-			<legend>Insertion d'une categorie</legend>
+			<legend>Inscription d'un client</legend>
 			<table>
 				<tr>
-					<td>Libelle :</td>
-					<td><input type="text" name="libelle" value="" id="libelle" /></td>
+					<td>Nom :</td>
+					<td><input type="text" name="nom" value="" /></td>
+				</tr>
+				<tr>
+					<td>Pr&eacute;nom :</td>
+					<td><input type="text" name="prenom" value="" /></td>
+				</tr>
+				<tr>
+					<td>Login :</td>
+					<td><input type="text" name="login" value="" /></td>
+				</tr>
+				<tr>
+					<td>Password :</td>
+					<td><input type="password" name="password" value="" /></td>
+				</tr>
+				<tr>
+					<td>Mail :</td>
+					<td><input type="text" name="mail" value="" /></td>
+				</tr>
+				<tr>
+					<td>Adresse :</td>
+					<td><input type="text" name="adresse" value="" size="60" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Envoyer"/></td>

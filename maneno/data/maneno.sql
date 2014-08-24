@@ -4,7 +4,7 @@
 
 -- Dumped from database version 9.2.1
 -- Dumped by pg_dump version 9.2.1
--- Started on 2014-08-21 22:56:57
+-- Started on 2014-08-24 23:37:27
 
 SET statement_timeout = 0;
 SET client_encoding = 'UTF8';
@@ -88,7 +88,7 @@ ALTER SEQUENCE categorie_id_seq OWNED BY categorie.id;
 -- Name: categorie_id_seq; Type: SEQUENCE SET; Schema: tp; Owner: postgres
 --
 
-SELECT pg_catalog.setval('categorie_id_seq', 2, true);
+SELECT pg_catalog.setval('categorie_id_seq', 5, true);
 
 
 --
@@ -139,7 +139,7 @@ ALTER SEQUENCE client_id_seq OWNED BY client.id;
 -- Name: client_id_seq; Type: SEQUENCE SET; Schema: tp; Owner: postgres
 --
 
-SELECT pg_catalog.setval('client_id_seq', 1, false);
+SELECT pg_catalog.setval('client_id_seq', 3, true);
 
 
 --
@@ -150,7 +150,6 @@ SELECT pg_catalog.setval('client_id_seq', 1, false);
 CREATE TABLE commande (
     id integer NOT NULL,
     date timestamp without time zone NOT NULL,
-    etat character varying(255) NOT NULL,
     total real NOT NULL,
     id_client integer NOT NULL
 );
@@ -188,7 +187,7 @@ ALTER SEQUENCE commande_id_seq OWNED BY commande.id;
 -- Name: commande_id_seq; Type: SEQUENCE SET; Schema: tp; Owner: postgres
 --
 
-SELECT pg_catalog.setval('commande_id_seq', 1, false);
+SELECT pg_catalog.setval('commande_id_seq', 6, true);
 
 
 --
@@ -237,7 +236,7 @@ ALTER SEQUENCE detail_commande_id_seq OWNED BY detail_commande.id;
 -- Name: detail_commande_id_seq; Type: SEQUENCE SET; Schema: tp; Owner: postgres
 --
 
-SELECT pg_catalog.setval('detail_commande_id_seq', 1, false);
+SELECT pg_catalog.setval('detail_commande_id_seq', 9, true);
 
 
 --
@@ -287,7 +286,7 @@ ALTER SEQUENCE produit_id_seq OWNED BY produit.id;
 -- Name: produit_id_seq; Type: SEQUENCE SET; Schema: tp; Owner: postgres
 --
 
-SELECT pg_catalog.setval('produit_id_seq', 1, true);
+SELECT pg_catalog.setval('produit_id_seq', 4, true);
 
 
 --
@@ -339,6 +338,8 @@ ALTER TABLE ONLY produit ALTER COLUMN id SET DEFAULT nextval('produit_id_seq'::r
 COPY categorie (id, libelle) FROM stdin;
 1	categorie 01
 2	categorie 02
+4	categorie 03
+5	categorie 004
 \.
 
 
@@ -349,6 +350,9 @@ COPY categorie (id, libelle) FROM stdin;
 --
 
 COPY client (id, nom, prenom, login, password, mail, adresse) FROM stdin;
+1	toto1	tata1	toto1	toto1	toto@test.mg	adresse toto 1
+2	toto2	tata2	toto2	toto2	toto2@yy.mg	adr T2
+3	titi	tete	titi	titi	titi@tiit.mg	adr titit
 \.
 
 
@@ -358,7 +362,8 @@ COPY client (id, nom, prenom, login, password, mail, adresse) FROM stdin;
 -- Data for Name: commande; Type: TABLE DATA; Schema: tp; Owner: postgres
 --
 
-COPY commande (id, date, etat, total, id_client) FROM stdin;
+COPY commande (id, date, total, id_client) FROM stdin;
+6	2014-08-24 23:36:37	10607.2002	3
 \.
 
 
@@ -369,6 +374,9 @@ COPY commande (id, date, etat, total, id_client) FROM stdin;
 --
 
 COPY detail_commande (id, id_commande, id_produit, prix_jour, quantite) FROM stdin;
+7	6	2	220.119995	10
+8	6	3	330.299988	20
+9	6	4	360	5
 \.
 
 
@@ -379,7 +387,10 @@ COPY detail_commande (id, id_commande, id_produit, prix_jour, quantite) FROM std
 --
 
 COPY produit (id, libelle, description, prix, stock, id_categorie) FROM stdin;
-1	produit 01	desc 01	150	10	1
+1	produit 01	desc 01	150	6	1
+2	prod2XX	des2XX	220.119995	180	2
+3	prod3	d3	330.299988	240	2
+4	prod III	desc 03	360	25	4
 \.
 
 
@@ -429,7 +440,7 @@ ALTER TABLE ONLY produit
 
 
 --
--- TOC entry 1959 (class 2606 OID 33965)
+-- TOC entry 1959 (class 2606 OID 33991)
 -- Name: commande_id_client_fkey; Type: FK CONSTRAINT; Schema: tp; Owner: postgres
 --
 
@@ -476,7 +487,7 @@ GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
 
--- Completed on 2014-08-21 22:56:58
+-- Completed on 2014-08-24 23:37:28
 
 --
 -- PostgreSQL database dump complete

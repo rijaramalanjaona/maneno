@@ -24,7 +24,7 @@
 </style>
 </head>
 <body>
-
+	<c:import url="/WEB-INF/vues/admin/menu.jsp"></c:import>
 	<h1>Modification d'une categorie</h1>
 	<form action="<c:url value="/?action=modifierCategorie" />" method="post">
 		<input type="hidden" name="id" value="<c:out value="${categorie.id}" />" />

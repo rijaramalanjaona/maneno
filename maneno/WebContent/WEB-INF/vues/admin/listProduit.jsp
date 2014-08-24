@@ -59,7 +59,7 @@
 </style>
 </head>
 <body>
-
+	<c:import url="/WEB-INF/vues/admin/menu.jsp"></c:import>
 	<h1>Liste des produits</h1>
 	<table id="tab">
 		<tr>
